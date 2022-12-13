@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
 ]
+
 CORS_ALLOWED_ORIGINS = ['http://localhost:3000']
 ROOT_URLCONF = 'djangoBackend.urls'
 
@@ -82,9 +83,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'proyecto',
         'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'PASSWORD': 'udp202x',
         'HOST': 'localhost',
-        'PORT': '5432',
+        'PORT': '5433',
     }
 }
 

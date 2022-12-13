@@ -7,3 +7,7 @@ class Currency(models.Model):
     type = models.CharField(max_length=30, null=False)
     value = models.FloatField(null=False)
     date = models.DateField(default=date.today, null=False)
+
+    class Meta:
+        managed = False
+        db_table = 'dashboard_currency'
