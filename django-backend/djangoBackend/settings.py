@@ -10,12 +10,17 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import os
 from pathlib import Path
+
+import environ
+
+env = environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -40,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'dashboard',
+    'django_crontab',
 ]
 
 MIDDLEWARE = [
@@ -108,6 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CRONJOBS = [(' * * *', 'dashboard.cron.my_cron_job')]
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
@@ -130,3 +137,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CMF_API_KEY = env('CMF_APIKEY')
+
+API_URL = (
+    f"https://api.cmfchile.cl/api-sbifv3/recursos_api/[type]?apikey={CMF_API_KEY}&formato=JSON"
+)
+print(API_URL)
