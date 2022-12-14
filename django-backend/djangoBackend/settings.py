@@ -14,6 +14,8 @@ import os
 from pathlib import Path
 
 import environ
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 env = environ.Env()
 
@@ -31,6 +33,20 @@ SECRET_KEY = 'django-insecure-m&x@bagvd7y!*t79gs3zr4w9tf+95nlq+vlb&0)oyje&%#qu&t
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+sentry_sdk.init(
+    dsn="https://7620cf1c086f4571a75f83f686689b05@o4504329784000512.ingest.sentry.io/4504329788129280",
+    integrations=[
+        DjangoIntegration(),
+    ],
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production.
+    traces_sample_rate=1.0,
+    # If you wish to associate users to errors (assuming you are using
+    # django.contrib.auth) you may enable sending PII data.
+    send_default_pii=True,
+)
 
 
 # Application definition
@@ -58,6 +74,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
 ]
+
 
 CORS_ALLOWED_ORIGINS = ['http://localhost:3000']
 ROOT_URLCONF = 'djangoBackend.urls'
@@ -89,10 +106,17 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'proyecto',
         'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'db',
-        'PORT': '5432',
+        'PASSWORD': 'udp202x',
+        'HOST': 'localhost',
+        'PORT': '5433',
     }
+    # 'default': {
+    #    'ENGINE': 'django.db.backends.postgresql',
+    #    'NAME': 'proyecto',
+    #    'USER': 'postgres',
+    #    'PASSWORD': 'postgres',
+    #    'HOST': 'db',
+    #    'PORT': '5432',
 }
 
 
