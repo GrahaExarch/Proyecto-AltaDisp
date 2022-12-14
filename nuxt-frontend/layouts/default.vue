@@ -46,11 +46,11 @@ export default {
       drawer: false,
       fixed: false,
       items: [],
-      menuItems: [{ title: 'Ver Monedas', path: '/currency/get' }],
+      menuItems: [],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Proyecto Alta',
+      title: 'Dashboard AltaDisponibilidad',
     }
   },
 }

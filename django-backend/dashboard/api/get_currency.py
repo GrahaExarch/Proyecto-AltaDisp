@@ -8,8 +8,7 @@ from rest_framework.views import APIView
 class GetCurrencyUSD(APIView):
     def get(self, request):
         try:
-            data = Currency.objects.all()
-            data = data.filter(type='USD')
+            data = Currency.objects.filter(type='USD').order_by('-date')
         except Exception:
             return JsonResponse({"status": False}, status=status.HTTP_200_OK)
         return JsonResponse(
@@ -21,8 +20,7 @@ class GetCurrencyUSD(APIView):
 class GetCurrencyUF(APIView):
     def get(self, request):
         try:
-            data = Currency.objects.all()
-            data = data.filter(type='UF')
+            data = Currency.objects.filter(type='UF').order_by('-date')
         except Exception:
             return JsonResponse({"status": False}, status=status.HTTP_200_OK)
         return JsonResponse(
