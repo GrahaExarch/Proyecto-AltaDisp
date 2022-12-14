@@ -113,9 +113,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-CRONJOBS = [(' * * *', 'dashboard.cron.my_cron_job')]
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -143,4 +140,8 @@ CMF_API_KEY = env('CMF_APIKEY')
 API_URL = (
     f"https://api.cmfchile.cl/api-sbifv3/recursos_api/[type]?apikey={CMF_API_KEY}&formato=JSON"
 )
-print(API_URL)
+
+CRONJOBS = [
+    (' * * *', 'dashboard.cron.fetch_usd_price'),
+    (' * * *', 'dashboard.cron.fetch_uf_price'),
+]
