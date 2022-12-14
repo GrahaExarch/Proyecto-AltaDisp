@@ -89,9 +89,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'proyecto',
         'USER': 'postgres',
-        'PASSWORD': 'udp202x',
-        'HOST': 'localhost',
-        'PORT': '5433',
+        'PASSWORD': 'postgres',
+        'HOST': 'db',
+        'PORT': '5432',
     }
 }
 
@@ -137,11 +137,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CMF_API_KEY = env('CMF_APIKEY')
 
-API_URL = (
-    f"https://api.cmfchile.cl/api-sbifv3/recursos_api/[type]?apikey={CMF_API_KEY}&formato=JSON"
-)
+API_URL = f"https://api.sbif.cl/api-sbifv3/recursos_api/[type]?apikey={CMF_API_KEY}&formato=JSON"
 
 CRONJOBS = [
-    (' * * *', 'dashboard.cron.fetch_usd_price'),
-    (' * * *', 'dashboard.cron.fetch_uf_price'),
+    ('0 13 * * *', 'dashboard.cron.fetch_usd_price', '>>/cron/django_cron.log 2>&1'),
+    ('0 13 * * *', 'dashboard.cron.fetch_uf_price', '>>/cron/django_cron.log 2>&1'),
 ]

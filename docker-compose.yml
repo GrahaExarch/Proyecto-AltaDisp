@@ -1,7 +1,7 @@
 version: '3.8'
-#Se definen los servicios web, db y front.
+#Se definen los servicios back, db y front.
 services:
-  web:
+  back:
     #Se dice que se construya el servicio usando el Dockerfile ubicado en /django-backend
     build:
       context: ./django-backend
@@ -10,13 +10,17 @@ services:
     #Se carga el volumen en django-backend
     volumes:
       - ./django-backend:/Proyecto
+    env_file: ./django-backend/.env
     #Se enlaza el puerto del container al puerto del computador
-    env_file: .env
     ports:
       - 8000:8000
     #Se indica que no se puede ejecutar hasta que se este construyendo db (no espera a que termine)
     depends_on:
       - db
+    links:
+      - db:db
+    networks:
+      - djangonetwork
     #Por lo anterior, se agrega esta restar_policy, dado que si la bd no esta creada, el runserver se cae
     deploy:
       restart_policy:
@@ -27,12 +31,16 @@ services:
   db:
     #Se construye utilizando la imagen publica de postgres
     image: postgres
+    container_name: postgres-db
+    networks:
+      - djangonetwork
     #Se asigna la variable de entorno a la clave de postgres
+    user: postgres
     environment:
       POSTGRES_PASSWORD: postgres
-    #Se enlaza el puerto del container al puerto del computador, se usa el 5433 para diferenciarla de otra bd existente
+    #Se enlaza el puerto del container al puerto del computador, se usa el 54320 para diferenciarla de otra bd existente
     ports:
-      - 5440:5432
+      - 54320:5432
     #Se montan los volumenes para manter datos y tambien para cargar de manera automatica un dump de la bd
     volumes:
       - postgres_data:/var/lib/postgresql/data/
@@ -43,6 +51,7 @@ services:
     build:
       context: ./nuxt-frontend
       dockerfile: Dockerfile
+    container_name: nuxt-frontend
     volumes:
       - ./nuxt-frontend:/Proyecto
     #Se enlaza el puerto del container al puerto del computador
@@ -50,8 +59,11 @@ services:
       - 3000:3000
     #Se le dice al servicio que depende de web y db, basicamente es el ultimo en iniciarse
     depends_on:
-      - web
+      - back
       - db
 #Se monta el volumen de postgres_data
 volumes:
   postgres_data:
+networks:
+  djangonetwork:
+    driver: bridge
