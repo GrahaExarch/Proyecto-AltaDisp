@@ -2,8 +2,9 @@ name: CI/CD
 
 on:
   push:
-    branches: [ master ]
-
+    branches:
+      - main
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
