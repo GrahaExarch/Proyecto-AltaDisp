@@ -1,44 +1,21 @@
-name: ci
+name: CI/CD
 
 on:
   push:
-    branches:
-      - main
-      - master
-  pull_request:
-    branches:
-      - main
-      - master
+    branches: [ master ]
 
 jobs:
-  ci:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [lts/*]
-
+  build:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎
-        uses: actions/checkout@master
+      - uses: actions/checkout@v2
+      - name: Build and push Docker images
+        run: |
+          docker-compose build
+          docker-compose push
+      - name: Deploy to production
+        if: success()
+        run: |
+          docker-compose pull
+          docker-compose up -d
 
-      - name: Setup node env 🏗
-        uses: actions/setup-node@v3.0.0
-        with:
-          node-version: ${{ matrix.node }}
-          check-latest: true
-
-      - name: Cache node_modules 📦
-        uses: actions/cache@v2.1.7
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      #- name: Install dependencies 👨🏻‍💻
-      #  run: npm ci --prefer-offline --no-audit
-
-      #- name: Run linter 👀
-      #  run: npm run lint
