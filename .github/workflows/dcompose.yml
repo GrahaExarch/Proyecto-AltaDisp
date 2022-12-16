@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Build and push images
+    - name: Build and Test 
       run: |
-        docker-compose build
+        docker-compose build 
+        docker-compose up
+        docker-compose down
