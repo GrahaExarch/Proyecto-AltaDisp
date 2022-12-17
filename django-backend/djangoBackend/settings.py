@@ -62,7 +62,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'dashboard',
     'django_crontab',
-    'django_grpc_framework',
 ]
 
 MIDDLEWARE = [
