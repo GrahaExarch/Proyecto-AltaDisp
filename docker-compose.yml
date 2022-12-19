@@ -52,8 +52,6 @@ services:
       context: ./nuxt-frontend
       dockerfile: Dockerfile
     container_name: nuxt-frontend
-    volumes:
-      - ./nuxt-frontend:/Proyecto
     #Se enlaza el puerto del container al puerto del computador
     ports:
       - 3000:3000
