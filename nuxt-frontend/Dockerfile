@@ -19,4 +19,4 @@ ENV NUXT_PORT=3000
 ENV PATH /Proyecto/node_modules/.bin:$PATH
 #Comando para correr la aplicacion en modo dev
 
-CMD [ "npm", "run", "start" ]
+CMD [ "npm", "run", "dev" ]
