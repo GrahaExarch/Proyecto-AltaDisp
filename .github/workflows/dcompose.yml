@@ -17,6 +17,7 @@ jobs:
 
     - name: Build and Test
       run: |
+        sudo systemctl restart docker
         docker-compose down
         docker-compose build
 
