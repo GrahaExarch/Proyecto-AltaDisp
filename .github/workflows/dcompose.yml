@@ -14,9 +14,13 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     
+    - name: Fix Docker-compose problems
+      run: |
+        sudo groupadd docker
+        sudo usermod -aG docker ec2-user
+
     - name: Build and Test
       run: |
-        echo "$USER"
         docker-compose down
         docker-compose build
 
