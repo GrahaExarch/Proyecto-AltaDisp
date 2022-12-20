@@ -11,13 +11,6 @@ jobs:
     runs-on: self-hosted
 
     steps:
-    - name: Fix Docker-compose problems
-      run: |
-        sudo usermod -a -G docker ec2-user
-        cd /home/ec2-user/actions-runner/
-        sudo ./svc.sh stop
-        sudo ./svc.sh start
-
     - name: Checkout
       uses: actions/checkout@v2
     
