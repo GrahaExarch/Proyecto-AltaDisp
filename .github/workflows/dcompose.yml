@@ -8,9 +8,14 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
+
     steps:
-    - uses: actions/checkout@v2
     - name: Build and Test 
+      uses: actions/checkout@v2
       run: |
-        docker-compose build 
+        docker-compose down
+        docker-compose build
+
+    - name: Running the project
+      run: docker-compose up -d
