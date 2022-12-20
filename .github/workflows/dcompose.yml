@@ -18,6 +18,7 @@ jobs:
     - name: Build and Test
       run: |
         sudo systemctl restart docker
+        y
         docker system prune -a
         docker-compose down
         docker-compose build
