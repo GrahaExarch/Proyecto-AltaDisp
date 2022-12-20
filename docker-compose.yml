@@ -19,6 +19,7 @@ services:
       - db
     links:
       - db:db
+      - front:front
     networks:
       - djangonetwork
     #Por lo anterior, se agrega esta restar_policy, dado que si la bd no esta creada, el runserver se cae
