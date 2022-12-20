@@ -1,3 +1,4 @@
+version: '2.4'
 #Se definen los servicios back, db y front.
 services:
   back:
