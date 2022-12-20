@@ -17,10 +17,11 @@ jobs:
     - name: Fix Docker-compose problems
       run: |
         sudo usermod -aG docker ec2-user
+        sudo ./svc.sh stop
+        sudo ./svc.sh start
 
     - name: Build and Test
       run: |
-        ls
         docker-compose down
         docker-compose build
 
