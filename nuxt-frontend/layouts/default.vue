@@ -50,7 +50,7 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Dashboard AltaDisponibilidad',
+      title: 'Dashboard ChileToday',
     }
   },
 }
