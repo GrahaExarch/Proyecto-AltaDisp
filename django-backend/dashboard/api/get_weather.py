@@ -1,18 +1,20 @@
+import json
 
 from django.http import JsonResponse
 from rest_framework import status
 from rest_framework.views import APIView
-from grpc_server import weather_client, weather_pb2, weather_pb2_grpc, weather_server
+
+from ..grpc_client import weather_client
 
 
 class GetWeather(APIView):
     def get(self, request):
         try:
             data = weather_client.run()
-            print(data)
+            json_object = json.loads(data.json_message)
         except Exception:
             return JsonResponse({"status": False}, status=status.HTTP_200_OK)
         return JsonResponse(
-            {"status": True, "weather": data },
+            {"status": True, "weather": json_object},
             status=status.HTTP_200_OK,
         )

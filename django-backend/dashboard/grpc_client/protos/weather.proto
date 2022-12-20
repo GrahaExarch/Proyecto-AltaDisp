@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package weather;
+
+service Reporter {
+  rpc WeatherReport (WeatherRequest) returns (WeatherResponse);
+}
+
+message WeatherRequest {
+  string api_key = 1;
+}
+
+message WeatherResponse {
+  string message = 1;
+}

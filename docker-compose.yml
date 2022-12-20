@@ -59,6 +59,15 @@ services:
     depends_on:
       - back
       - db
+  weather:
+    build: 
+      context: ./grpc_server
+      dockerfile: Dockerfile
+    container_name: grpc-server
+    networks:
+      - djangonetwork
+    depends_on:
+      - back
 #Se monta el volumen de postgres_data
 volumes:
   postgres_data:

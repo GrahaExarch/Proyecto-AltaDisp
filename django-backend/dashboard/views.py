@@ -1,3 +1,7 @@
 from django.shortcuts import render
-from grpc_server import weather_client, weather_pb2, weather_pb2_grpc, weather_server
+
+from .grpc_client import weather_client
+from .grpc_client import weather_pb2
+from .grpc_client import weather_pb2_grpc
+
 # Create your views here.

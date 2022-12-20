@@ -1,17 +1,18 @@
 <template>
-  <v-card v-if="!loading" align="center">
-    <v-card-title class="headline"> El valor de {{ type }} es: </v-card-title>
-    <v-card-text>
-      <p class="overflow-auto text-h4 font-weight-bold">
-        {{ todayCurrency.value }}
-      </p>
-      <hr class="my-3" />
-    </v-card-text>
-    <v-card-actions>
-      <v-btn class="mx-auto" color="primary" @click="dialog = true">
+  <div class="px-6">
+    <p class="mb-2 text-h6">{{ type }} hoy</p>
+    <div class="d-flex flex-row justify-center align-center">
+      <v-card class="py-2" width="100">
+        1 <span class="font-weight-bold">{{ type }}</span>
+      </v-card>
+      <v-icon class="mx-7" size="28">mdi-swap-horizontal</v-icon>
+      <v-card class="py-2" width="150">
+        {{ todayCurrency.value }} <span class="font-weight-bold"> CLP</span>
+      </v-card>
+      <v-btn class="ml-6" color="primary" @click="dialog = true">
         Historico
       </v-btn>
-    </v-card-actions>
+    </div>
     <v-dialog v-model="dialog" width="500">
       <v-card>
         <v-card-title class="text-h5">
@@ -46,11 +47,11 @@
 
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="primary" text @click="dialog = false"> I accept </v-btn>
+          <v-btn color="primary" text @click="dialog = false"> Cerrar </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
-  </v-card>
+  </div>
 </template>
 
 <script>

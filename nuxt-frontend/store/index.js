@@ -30,6 +30,17 @@ const actions = {
       return false
     }
   },
+  async getWeather({commit},params){
+    try{
+      const response = await api(this.$axios).getWeather()
+      if (response.status){
+        return response.weather
+      }
+      return false
+    }catch(error){
+      return false
+    }
+  },
 }
 
 const mutations= {}

@@ -1,8 +1,8 @@
 <template>
-  <v-app dark>
-    <v-card flat tile>
-      <v-toolbar dense>
-        <v-toolbar-title>
+  <v-app>
+    <v-card>
+      <v-toolbar color="blue darken-3" dense>
+        <v-toolbar-title class="text-h6 white--text">
           <router-link to="/" tag="span" style="cursor: pointer">
             {{ title }}
           </router-link>

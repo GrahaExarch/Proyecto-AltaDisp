@@ -23,5 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/currency/get/usd', GetCurrencyUSD.as_view()),
     path('api/currency/get/uf', GetCurrencyUF.as_view()),
-    path('api/weather/get',GetWeather.as_view()),
+    path('api/weather/get', GetWeather.as_view()),
 ]
