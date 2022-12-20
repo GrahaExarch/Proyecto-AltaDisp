@@ -14,7 +14,7 @@ jobs:
     - name: Fix Docker-compose problems
       run: |
         sudo usermod -a -G docker ec2-user
-        cd actions-runner/
+        cd /home/ec2-user/actions-runner/
         sudo ./svc.sh stop
         sudo ./svc.sh start
 
