@@ -16,6 +16,7 @@ jobs:
     
     - name: Build and Test
       run: |
+        echo "$USER"
         docker-compose down
         docker-compose build
 
