@@ -30,8 +30,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = 'django-insecure-m&x@bagvd7y!*t79gs3zr4w9tf+95nlq+vlb&0)oyje&%#qu&t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
+DEBUG = False
 ALLOWED_HOSTS = ['44.204.41.200']
 
 sentry_sdk.init(
