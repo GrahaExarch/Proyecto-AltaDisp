@@ -16,7 +16,6 @@ jobs:
     
     - name: Fix Docker-compose problems
       run: |
-        sudo groupadd docker
         sudo usermod -aG docker ec2-user
 
     - name: Build and Test
