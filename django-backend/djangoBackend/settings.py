@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-m&x@bagvd7y!*t79gs3zr4w9tf+95nlq+vlb&0)oyje&%#qu&t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['44.204.41.200']
 
 sentry_sdk.init(
     dsn="https://7620cf1c086f4571a75f83f686689b05@o4504329784000512.ingest.sentry.io/4504329788129280",
