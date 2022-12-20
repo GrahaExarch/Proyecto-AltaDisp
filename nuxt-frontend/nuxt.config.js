@@ -47,7 +47,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: process.browser ? 'http://localhost:8000/api/' : 'http://127.0.0.1:8000/api/'
+    baseURL: process.browser ? 'http://localhost:8000/api/' : 'http://44.204.41.200:8000/api/'
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
