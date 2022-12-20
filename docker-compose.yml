@@ -58,7 +58,6 @@ services:
       - 3000:3000
     #Se le dice al servicio que depende de web y db, basicamente es el ultimo en iniciarse
     depends_on:
-      - back
       - db
   weather:
     build: 
